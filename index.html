@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiro 无限续杯 - Pro独享550额度</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .logo {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .badge-pro { background: linear-gradient(90deg, #ff6b6b, #ee5a24); }
+        .badge-platform { background: linear-gradient(90deg, #26de81, #20bf6b); }
+        .badge-stable { background: linear-gradient(90deg, #4834d4, #686de0); }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+        
+        .download-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .download-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .password-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 25px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .password-box span {
+            color: #feca57;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .doc-section {
+            background: rgba(72, 219, 251, 0.1);
+            border: 1px solid rgba(72, 219, 251, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .doc-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #48dbfb;
+        }
+        
+        .doc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(90deg, #48dbfb, #0abde3);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .doc-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(72, 219, 251, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #48dbfb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">☕</div>
+            <h1>Kiro 无限续杯</h1>
+            <p class="subtitle">Pro 独享 550 额度 · Cursor 最完美平替 · 官方直连 · 稳定无限续杯</p>
+            <div class="badges">
+                <span class="badge badge-pro">🎯 Pro独享550额度</span>
+                <span class="badge badge-platform">💻 Win / Mac / Linux</span>
+                <span class="badge badge-stable">⚡ 官方直连</span>
+            </div>
+        </header>
+        
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">♾️</div>
+                <h3 class="feature-title">无限续杯</h3>
+                <p class="feature-desc">长期稳定可用，用完自动续，无需担心额度耗尽</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3 class="feature-title">无感换号</h3>
+                <p class="feature-desc">无需登录账号，系统自动完成切换，体验无中断</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3 class="feature-title">上下文保留</h3>
+                <p class="feature-desc">完整保留对话记录，不影响连续性对话体验</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">官方直连</h3>
+                <p class="feature-desc">不共享、不限速、不降智，响应快速稳定</p>
+            </div>
+        </section>
+        
+        <section class="download-section">
+            <h2>🚀 立即下载</h2>
+            <a href="https://wwbdc.lanzoub.com/b0kom7p9i" target="_blank" class="download-btn">
+                <span>📦</span> 蓝奏云下载
+            </a>
+            <div class="password-box">
+                提取密码：<span>3ems</span>
+            </div>
+        </section>
+        
+        <section class="doc-section">
+            <h2>📖 使用教程</h2>
+            <p style="color: #a0a0a0; margin-bottom: 20px;">首次使用？查看详细教程快速上手</p>
+            <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank" class="doc-btn">
+                <span>📚</span> 查看使用文档
+            </a>
+        </section>
+        
+        <footer class="footer">
+            <p>© 2025 Kiro 无限续杯 | <a href="https://github.com/zeoak9297/kiro-free" target="_blank">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>
