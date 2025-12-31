@@ -9,8 +9,12 @@
 </p>
 
 <p align="center">
-  <a href="https://pahh.dpdns.org/"><img src="https://img.shields.io/badge/🔥_点击访问官网-pahh.dpdns.org-ff6b6b?style=for-the-badge&logo=google-chrome&logoColor=white" alt="官网"/></a>
+  <a href="https://kiroswitch.top/"><img src="https://img.shields.io/badge/🔥_点击访问官网-kiroswitch.top-ff6b6b?style=for-the-badge&logo=google-chrome&logoColor=white" alt="官网"/></a>
 </p>
+
+<blockquote align="center">
+  <h3>👉 <a href="https://kiroswitch.top/">点击访问官网 kiroswitch.top 立即体验</a> 👈</h3>
+</blockquote>
 
 <p align="center">
   <img src="https://img.shields.io/badge/平台-Windows%20%7C%20macOS%20%7C%20Linux-green?style=for-the-badge" alt="平台支持"/>
@@ -65,13 +69,13 @@ Kiro Pro 独享 550 额度版本，支持**无限续杯**，全程无需自行�
 ## 🌐 立即体验
 
 <p align="center">
-  <a href="https://pahh.dpdns.org/">
-    <img src="https://img.shields.io/badge/�_立即访问问官网-pahh.dpdns.org-ff4757?style=for-the-badge&logo=rocket&logoColor=white" alt="访问官网"/>
+  <a href="https://kiroswitch.top/">
+    <img src="https://img.shields.io/badge/🚀_立即访问官网-kiroswitch.top-ff4757?style=for-the-badge&logo=rocket&logoColor=white" alt="访问官网"/>
   </a>
 </p>
 
 <p align="center">
-  <a href="https://pahh.dpdns.org/">
+  <a href="https://kiroswitch.top/">
     <img src="https://img.shields.io/badge/👆_点击上方按钮_开始体验-ffffff?style=flat-square" alt="提示"/>
   </a>
 </p>
