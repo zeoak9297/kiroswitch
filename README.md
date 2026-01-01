@@ -74,7 +74,7 @@ Kiro Pro 独享 550 额度版本，支持**无限续杯**，全程无需自行�
 
 ---
 
-## � 下载安装
+## 📥 下载安装
 
 ### Kiro 官方客户端
 
@@ -89,11 +89,11 @@ Kiro Pro 独享 550 额度版本，支持**无限续杯**，全程无需自行�
 ### KiroSwitch 续杯工具
 
 <p align="center">
-  <a href="https://wwbdc.lanzoub.com/iEJwa3euhg3e"><img src="https://img.shields.io/badge/Windows-下载-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/></a>
+  <a href="https://wwbdc.lanzoub.com/ihchi3f06mre"><img src="https://img.shields.io/badge/Windows-下载-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/></a>
   &nbsp;
-  <a href="https://wwbdc.lanzoub.com/i3EHQ3euhgzg"><img src="https://img.shields.io/badge/macOS-下载-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS"/></a>
+  <a href="https://wwbdc.lanzoub.com/i2Jed3f06pte"><img src="https://img.shields.io/badge/macOS-下载-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS"/></a>
   &nbsp;
-  <a href="https://wwbdc.lanzoub.com/irRZs3euhghi"><img src="https://img.shields.io/badge/Linux-下载-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/></a>
+  <a href="https://wwbdc.lanzoub.com/iQ3Nj3f06pkf"><img src="https://img.shields.io/badge/Linux-下载-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/></a>
 </p>
 
 ---
