@@ -185,20 +185,50 @@
             transform: translateY(-2px);
         }
         
-        /* 主要卡片 - 2列 */
-        .main-cards {
+        /* 快速入口卡片 - 3列 */
+        .quick-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        
+        /* 下载卡片 - 2列 */
+        .download-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-bottom: 24px;
         }
         
-        /* 文档卡片 - 2列 */
-        .doc-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 24px;
+        .card.kiro { --accent: #8b5cf6; }
+        .card.switch { --accent: #06b6d4; }
+        .card.kiro .card-icon { background: rgba(139, 92, 246, 0.1); }
+        .card.switch .card-icon { background: rgba(6, 182, 212, 0.1); }
+        
+        .download-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .download-links a {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #000));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .download-links a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
         }
         
         /* 二维码卡片 - 2列 */
@@ -414,10 +444,16 @@
                 font-size: 0.9rem;
             }
             
-            .main-cards,
-            .doc-cards,
+            .quick-cards,
+            .download-cards,
             .qr-cards {
                 gap: 25px;
+            }
+            
+            @media (max-width: 767px) {
+                .quick-cards {
+                    grid-template-columns: 1fr;
+                }
             }
             
             .card {
@@ -511,24 +547,21 @@
             </div>
         </section>
         
-        <!-- 购买 -->
-        <div class="main-cards">
-            <div class="card buy" style="grid-column: span 2;">
+        <!-- 快速入口：购买、教程、FAQ -->
+        <div class="quick-cards">
+            <div class="card buy">
                 <div class="card-icon">💎</div>
                 <h3 class="card-title">购买服务</h3>
-                <p class="card-desc">获取 Pro 独享账号，享受无限续杯体验</p>
+                <p class="card-desc">获取 Pro 独享账号</p>
                 <a href="https://pay.ldxp.cn/shop/Z3VSKEGC" target="_blank" class="card-btn">
                     立即购买 →
                 </a>
             </div>
-        </div>
-        
-        <!-- 文档 -->
-        <div class="doc-cards">
+            
             <div class="card doc">
                 <div class="card-icon">📖</div>
                 <h3 class="card-title">使用教程</h3>
-                <p class="card-desc">详细图文教程<br>快速上手</p>
+                <p class="card-desc">详细图文教程</p>
                 <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank" class="card-btn">
                     查看教程 →
                 </a>
@@ -537,10 +570,35 @@
             <div class="card faq">
                 <div class="card-icon">❓</div>
                 <h3 class="card-title">常见问题</h3>
-                <p class="card-desc">遇到问题？<br>先看这里</p>
+                <p class="card-desc">遇到问题先看这里</p>
                 <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/lgbugs1doxxtuwxg" target="_blank" class="card-btn">
                     查看FAQ →
                 </a>
+            </div>
+        </div>
+        
+        <!-- 下载区域 -->
+        <div class="download-cards">
+            <div class="card kiro">
+                <div class="card-icon">🚀</div>
+                <h3 class="card-title">Kiro 官方客户端</h3>
+                <p class="card-desc">下载官方 Kiro IDE</p>
+                <div class="download-links">
+                    <a href="https://desktop-release.kiro.dev/latest/windows/x64" target="_blank">Windows</a>
+                    <a href="https://desktop-release.kiro.dev/latest/darwin/arm64" target="_blank">macOS</a>
+                    <a href="https://desktop-release.kiro.dev/latest/linux/x64" target="_blank">Linux</a>
+                </div>
+            </div>
+            
+            <div class="card switch">
+                <div class="card-icon">🔄</div>
+                <h3 class="card-title">KiroSwitch 续杯工具</h3>
+                <p class="card-desc">无限续杯必备工具</p>
+                <div class="download-links">
+                    <a href="https://wwbdc.lanzoub.com/iEJwa3euhg3e" target="_blank">Windows</a>
+                    <a href="https://wwbdc.lanzoub.com/i3EHQ3euhgzg" target="_blank">macOS</a>
+                    <a href="https://wwbdc.lanzoub.com/irRZs3euhghi" target="_blank">Linux</a>
+                </div>
             </div>
         </div>
         

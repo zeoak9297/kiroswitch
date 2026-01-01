@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/cfe9214e-4a1a-43d1-9b7f-5792efc37bbc" width="120" alt="Kiro Logo"/>
-</p>
-
 <h1 align="center">☕ Kiro 无限续杯</h1>
 
 <p align="center">
@@ -66,17 +62,47 @@ Kiro Pro 独享 550 额度版本，支持**无限续杯**，全程无需自行�
 
 ---
 
+## 🔗 快速入口
+
+<p align="center">
+  <a href="https://pay.ldxp.cn/shop/Z3VSKEGC"><img src="https://img.shields.io/badge/💎_购买服务-立即购买-ff6b6b?style=for-the-badge" alt="购买服务"/></a>
+  &nbsp;
+  <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#"><img src="https://img.shields.io/badge/📖_使用教程-查看教程-60a5fa?style=for-the-badge" alt="使用教程"/></a>
+  &nbsp;
+  <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/lgbugs1doxxtuwxg"><img src="https://img.shields.io/badge/❓_常见问题-查看FAQ-fbbf24?style=for-the-badge" alt="常见问题"/></a>
+</p>
+
+---
+
+## � 下载安装
+
+### Kiro 官方客户端
+
+<p align="center">
+  <a href="https://desktop-release.kiro.dev/latest/windows/x64"><img src="https://img.shields.io/badge/Windows-下载-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/></a>
+  &nbsp;
+  <a href="https://desktop-release.kiro.dev/latest/darwin/arm64"><img src="https://img.shields.io/badge/macOS-下载-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS"/></a>
+  &nbsp;
+  <a href="https://desktop-release.kiro.dev/latest/linux/x64"><img src="https://img.shields.io/badge/Linux-下载-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/></a>
+</p>
+
+### KiroSwitch 续杯工具
+
+<p align="center">
+  <a href="https://wwbdc.lanzoub.com/iEJwa3euhg3e"><img src="https://img.shields.io/badge/Windows-下载-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/></a>
+  &nbsp;
+  <a href="https://wwbdc.lanzoub.com/i3EHQ3euhgzg"><img src="https://img.shields.io/badge/macOS-下载-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS"/></a>
+  &nbsp;
+  <a href="https://wwbdc.lanzoub.com/irRZs3euhghi"><img src="https://img.shields.io/badge/Linux-下载-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/></a>
+</p>
+
+---
+
 ## 🌐 立即体验
 
 <p align="center">
   <a href="https://kiroswitch.top/">
     <img src="https://img.shields.io/badge/🚀_立即访问官网-kiroswitch.top-ff4757?style=for-the-badge&logo=rocket&logoColor=white" alt="访问官网"/>
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://kiroswitch.top/">
-    <img src="https://img.shields.io/badge/👆_点击上方按钮_开始体验-ffffff?style=flat-square" alt="提示"/>
   </a>
 </p>
 
