@@ -2,634 +2,587 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiro 无限续杯 - Pro独享550额度</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-dark: #0c0c0f;
+            --bg-card: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.08);
+            --text: #fff;
+            --text-secondary: rgba(255,255,255,0.6);
+            --text-muted: rgba(255,255,255,0.4);
+            --gradient-1: #6366f1;
+            --gradient-2: #a855f7;
+            --gradient-3: #ec4899;
+            --gradient-4: #06b6d4;
         }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0f;
-            min-height: 100vh;
-            color: #fff;
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        
         /* 动态背景 */
-        .bg-gradient {
+        .bg-effects {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(120, 0, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(0, 200, 255, 0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: -1;
             overflow: hidden;
         }
-        
-        .particle {
+        .bg-effects::before {
+            content: '';
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float-up 15s infinite;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99,102,241,0.15), transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 20%, rgba(168,85,247,0.12), transparent 50%),
+                radial-gradient(ellipse 50% 30% at 60% 80%, rgba(236,72,153,0.1), transparent 50%),
+                radial-gradient(ellipse 40% 40% at 30% 70%, rgba(6,182,212,0.08), transparent 50%);
+            animation: bg-shift 20s ease-in-out infinite;
         }
-        
-        @keyframes float-up {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        @keyframes bg-shift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, -2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 16px;
-            position: relative;
+</style>
+</head>
+<body>
+    <div class="bg-effects"></div>
+    <style>
+        .noise {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
-        
-        /* Hero区域 */
-        .hero {
-            text-align: center;
-            padding: 60px 0 40px;
-            position: relative;
+        .wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        /* 导航 */
+        .nav {
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(12,12,15,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
-        
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 17px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .logo-icon { font-size: 22px; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        /* Hero */
+        .hero { padding: 100px 0 80px; text-align: center; position: relative; }
         .hero::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
-            z-index: -1;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 60%);
+            pointer-events: none;
         }
-        
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 24px;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+            border: 1px solid rgba(139,92,246,0.3);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: #c4b5fd;
         }
-        
-        .logo {
-            font-size: 72px;
-            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .logo-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 140px;
-            height: 140px;
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            border-radius: 50%;
-            animation: ring-rotate 10s linear infinite;
-        }
-        
-        .logo-ring::before {
+        .badge::before {
             content: '';
-            position: absolute;
-            top: -5px;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: #8b5cf6;
+            width: 6px;
+            height: 6px;
+            background: #a78bfa;
             border-radius: 50%;
-            box-shadow: 0 0 20px #8b5cf6;
+            animation: pulse-dot 2s ease-in-out infinite;
         }
-        
-        @keyframes ring-rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
-        
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(40px, 8vw, 64px);
             font-weight: 800;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #f472b6 100%);
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #c4b5fd 40%, #f0abfc 70%, #fff 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -1px;
+            animation: text-shine 4s linear infinite;
         }
-        
-        .tagline {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 30px;
-            font-weight: 300;
-            line-height: 1.6;
-            padding: 0 10px;
+        @keyframes text-shine {
+            to { background-position: 200% center; }
         }
-        
-        .highlight {
-            color: #a78bfa;
+        .hero-desc {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+</style>
+    <style>
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 15px;
             font-weight: 600;
-        }
-        
-        /* 特性标签 */
-        .tags {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-            padding: 0 10px;
-        }
-        
-        .tag {
-            padding: 8px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        
-        .tag:hover {
-            background: rgba(139, 92, 246, 0.2);
-            border-color: rgba(139, 92, 246, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        /* 快速入口卡片 - 3列 */
-        .quick-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        
-        /* 下载卡片 - 2列 */
-        .download-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        
-        .card.kiro { --accent: #8b5cf6; }
-        .card.switch { --accent: #06b6d4; }
-        .card.kiro .card-icon { background: rgba(139, 92, 246, 0.1); }
-        .card.switch .card-icon { background: rgba(6, 182, 212, 0.1); }
-        
-        .download-links {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .download-links a {
-            padding: 10px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #fff;
-            background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #000));
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
+            border-radius: 12px;
             text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .download-links a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
-        }
-        
-        /* 二维码卡片 - 1列 */
-        .qr-cards {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        
-        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
             position: relative;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            backdrop-filter: blur(20px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
         }
-        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(139,92,246,0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139,92,246,0.5);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.15);
+        }
+        /* 特性条 */
+        .features-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 28px 0;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        .feature-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .feature-tag:hover {
+            border-color: rgba(139,92,246,0.4);
+            background: rgba(139,92,246,0.1);
+            color: #c4b5fd;
+        }
+        .feature-tag .icon {
+            font-size: 14px;
+        }
+        /* 卡片通用 */
+        .section { margin-bottom: 50px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+        .cards-grid { display: grid; gap: 16px; }
+        .cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(139,92,246,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
-        
         .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.3),
-                0 0 60px rgba(139, 92, 246, 0.1);
+            border-color: rgba(139,92,246,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 60px rgba(139,92,246,0.1);
         }
-        
+        .card:hover::before { opacity: 1; }
+</style>
+    <style>
+        .card-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; position: relative; z-index: 1; }
         .card-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            border-radius: 16px;
+            font-size: 24px;
+            border-radius: 14px;
+            flex-shrink: 0;
             position: relative;
         }
-        
-        .card-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, var(--accent), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-        
-        .card.buy { --accent: #f472b6; }
-        .card.doc { --accent: #60a5fa; }
-        .card.faq { --accent: #fbbf24; }
-        .card.qq { --accent: #34d399; }
-        
-        .card.buy .card-icon { background: rgba(244, 114, 182, 0.1); }
-        .card.doc .card-icon { background: rgba(96, 165, 250, 0.1); }
-        .card.faq .card-icon { background: rgba(251, 191, 36, 0.1); }
-        .card.qq .card-icon { background: rgba(52, 211, 153, 0.1); }
-        
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #fff;
-        }
-        
-        .card-desc {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .card-btn {
+        .card-icon.purple { background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); }
+        .card-icon.blue { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(6,182,212,0.2)); }
+        .card-icon.amber { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(251,191,36,0.2)); }
+        .card-icon.emerald { background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(52,211,153,0.2)); }
+        .card-icon.pink { background: linear-gradient(135deg, rgba(236,72,153,0.2), rgba(244,114,182,0.2)); }
+        .card-icon.cyan { background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(34,211,238,0.2)); }
+        .card-info h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+        .card-info p { font-size: 13px; color: var(--text-muted); }
+        .card-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 12px 24px;
-            font-size: 0.9rem;
+            font-size: 14px;
             font-weight: 600;
-            color: #fff;
-            background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #000));
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
             text-decoration: none;
             transition: all 0.3s;
             position: relative;
-            overflow: hidden;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .card-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .card-btn:hover::before {
-            left: 100%;
-        }
-        
-        .card-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
-        }
-        
-        /* 二维码样式 */
-        .qr-image {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 16px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .qr-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .qr-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        /* 底部 */
-        .footer {
-            text-align: center;
-            padding: 50px 20px 30px;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
-        }
-        
-        .footer a {
-            color: #a78bfa;
+        .card-link svg { stroke: var(--gradient-2); transition: transform 0.3s; }
+        .card-link:hover svg { transform: translateX(4px); }
+        /* 下载卡片 */
+        .download-card { padding: 32px; }
+        .download-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .download-card .desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+        .download-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
-        
-        .footer a:hover {
-            color: #c4b5fd;
+        .download-btn:hover {
+            background: rgba(139,92,246,0.15);
+            border-color: rgba(139,92,246,0.4);
         }
-        
-        /* 玻璃态装饰 */
-        .glass-orb {
-            position: fixed;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent);
-            filter: blur(1px);
-            z-index: -1;
-            display: none;
+        .download-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        /* QQ群卡片 */
+        .qr-card { display: flex; align-items: center; gap: 32px; padding: 36px; }
+        .qr-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--border);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         }
-        
-        /* PC端样式 */
-        @media (min-width: 768px) {
-            .container {
-                padding: 60px 20px;
-            }
-            
-            .hero {
-                padding: 80px 0 60px;
-            }
-            
-            .hero::before {
-                width: 600px;
-                height: 600px;
-            }
-            
-            .logo {
-                font-size: 100px;
-            }
-            
-            .logo-ring {
-                width: 180px;
-                height: 180px;
-            }
-            
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.3rem;
-            }
-            
-            .tag {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .quick-cards,
-            .download-cards,
-            .qr-cards {
-                gap: 25px;
-            }
-            
-            @media (max-width: 767px) {
-                .quick-cards {
-                    grid-template-columns: 1fr;
-                }
-            }
-            
-            .card {
-                padding: 40px 30px;
-                border-radius: 24px;
-            }
-            
-            .card-icon {
-                width: 80px;
-                height: 80px;
-                font-size: 40px;
-                margin-bottom: 25px;
-                border-radius: 20px;
-            }
-            
-            .card-title {
-                font-size: 1.4rem;
-                margin-bottom: 12px;
-            }
-            
-            .card-desc {
-                font-size: 0.95rem;
-                margin-bottom: 30px;
-            }
-            
-            .card-btn {
-                padding: 14px 32px;
-                font-size: 1rem;
-            }
-            
-            .qr-image {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .qr-label {
-                font-size: 0.95rem;
-            }
-            
-            .glass-orb {
-                display: block;
-            }
-            
-            .orb-1 {
-                width: 300px;
-                height: 300px;
-                top: 10%;
-                right: 5%;
-                animation: orb-float 20s ease-in-out infinite;
-            }
-            
-            .orb-2 {
-                width: 200px;
-                height: 200px;
-                bottom: 20%;
-                left: 10%;
-                animation: orb-float 15s ease-in-out infinite reverse;
-            }
+        .qr-image img { width: 100%; height: 100%; object-fit: cover; }
+        .qr-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+        .qr-info p { font-size: 15px; color: var(--text-secondary); margin-bottom: 18px; line-height: 1.6; }
+        .qr-info .tip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(52,211,153,0.15));
+            border: 1px solid rgba(52,211,153,0.3);
+            color: #6ee7b7;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 10px;
         }
-        
-        @keyframes orb-float {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(30px, -30px); }
-            50% { transform: translate(-20px, 20px); }
-            75% { transform: translate(20px, 30px); }
+</style>
+    <style>
+        /* Footer */
+        .footer {
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+        .copyright { font-size: 13px; color: var(--text-muted); }
+        /* 响应式 - 平板 */
+        @media (max-width: 900px) {
+            .cards-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        /* 响应式 - 手机 */
+        @media (max-width: 640px) {
+            .wrapper { padding: 0 16px; }
+            .nav-links { display: none; }
+            .hero { padding: 70px 0 50px; }
+            .hero::before { width: 300px; height: 300px; }
+            h1 { letter-spacing: -1px; }
+            .hero-desc { font-size: 15px; margin-bottom: 32px; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+            .features-bar { gap: 8px; padding: 20px 0; margin-bottom: 40px; }
+            .feature-tag { padding: 8px 14px; font-size: 12px; }
+            .cards-grid.cols-3,
+            .cards-grid.cols-2 { grid-template-columns: 1fr; }
+            .card { padding: 24px; border-radius: 16px; }
+            .download-card { padding: 24px; }
+            .download-btns { flex-direction: column; }
+            .download-btn { justify-content: center; }
+            .qr-card { flex-direction: column; text-align: center; padding: 28px; }
+            .qr-image { width: 140px; height: 140px; }
+            .footer-links { gap: 20px; }
+        }
+        /* 动画入场 */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+        .fade-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-up:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
-</head>
-<body>
-    <div class="bg-gradient"></div>
-    <div class="glass-orb orb-1"></div>
-    <div class="glass-orb orb-2"></div>
-    
-    <div class="particles" id="particles"></div>
-    
-    <div class="container">
-        <section class="hero">
-            <div class="logo-wrapper">
-                <div class="logo-ring"></div>
-                <div class="logo">☕</div>
+
+    <div class="noise"></div>
+
+    <nav class="nav">
+        <div class="wrapper nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">☕</span>
+                <span>Kiro 无限续杯</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank">使用教程</a>
+                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/lgbugs1doxxtuwxg" target="_blank">常见问题</a>
+                <a href="https://github.com/zeoak9297/kiro-free" target="_blank">GitHub</a>
             </div>
+        </div>
+    </nav>
+
+    <main class="wrapper">
+        <section class="hero">
+            <span class="badge">Pro 独享 · 550 额度</span>
             <h1>Kiro 无限续杯</h1>
-            <p class="tagline">
-                <span class="highlight">Pro 独享 550 额度</span> · Cursor 最完美平替 · 官方直连
-            </p>
-            <div class="tags">
-                <span class="tag">🎯 Pro独享</span>
-                <span class="tag">♾️ 无限续杯</span>
-                <span class="tag">🔄 无感换号</span>
-                <span class="tag">⚡ 官方直连</span>
-                <span class="tag">🛡️ 稳定防封</span>
+            <p class="hero-desc">Cursor 最完美平替方案，官方直连无需代理，稳定可靠的 AI 编程助手体验</p>
+            <div class="hero-actions">
+                <a href="https://pay.ldxp.cn/shop/Z3VSKEGC" target="_blank" class="btn btn-primary">
+                    立即购买
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank" class="btn btn-secondary">
+                    查看教程
+                </a>
             </div>
         </section>
-        
-        <!-- 快速入口：购买、教程、FAQ -->
-        <div class="quick-cards">
-            <div class="card buy">
-                <div class="card-icon">💎</div>
-                <h3 class="card-title">购买服务</h3>
-                <p class="card-desc">获取 Pro 独享账号</p>
-                <a href="https://pay.ldxp.cn/shop/Z3VSKEGC" target="_blank" class="card-btn">
-                    立即购买 →
-                </a>
-            </div>
-            
-            <div class="card doc">
-                <div class="card-icon">📖</div>
-                <h3 class="card-title">使用教程</h3>
-                <p class="card-desc">详细图文教程</p>
-                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank" class="card-btn">
-                    查看教程 →
-                </a>
-            </div>
-            
-            <div class="card faq">
-                <div class="card-icon">❓</div>
-                <h3 class="card-title">常见问题</h3>
-                <p class="card-desc">遇到问题先看这里</p>
-                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/lgbugs1doxxtuwxg" target="_blank" class="card-btn">
-                    查看FAQ →
-                </a>
-            </div>
+
+        <div class="features-bar">
+            <span class="feature-tag"><span class="icon">🎯</span> Pro独享</span>
+            <span class="feature-tag"><span class="icon">♾️</span> 无限续杯</span>
+            <span class="feature-tag"><span class="icon">🔄</span> 无感换号</span>
+            <span class="feature-tag"><span class="icon">⚡</span> 官方直连</span>
+            <span class="feature-tag"><span class="icon">🛡️</span> 稳定防封</span>
         </div>
-        
-        <!-- 下载区域 -->
-        <div class="download-cards">
-            <div class="card kiro">
-                <div class="card-icon">🚀</div>
-                <h3 class="card-title">Kiro 官方客户端</h3>
-                <p class="card-desc">下载官方 Kiro IDE</p>
-                <div class="download-links">
-                    <a href="https://desktop-release.kiro.dev/latest/windows/x64" target="_blank">Windows</a>
-                    <a href="https://desktop-release.kiro.dev/latest/darwin/arm64" target="_blank">macOS</a>
-                    <a href="https://desktop-release.kiro.dev/latest/linux/x64" target="_blank">Linux</a>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">快速开始</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="cards-grid cols-3">
+                <div class="card fade-up">
+                    <div class="card-header">
+                        <div class="card-icon purple">💎</div>
+                        <div class="card-info">
+                            <h3>购买服务</h3>
+                            <p>获取 Pro 独享账号</p>
+                        </div>
+                    </div>
+                    <a href="https://pay.ldxp.cn/shop/Z3VSKEGC" target="_blank" class="card-link">
+                        前往购买
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="card fade-up">
+                    <div class="card-header">
+                        <div class="card-icon blue">📖</div>
+                        <div class="card-info">
+                            <h3>使用教程</h3>
+                            <p>详细图文指南</p>
+                        </div>
+                    </div>
+                    <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank" class="card-link">
+                        查看教程
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="card fade-up">
+                    <div class="card-header">
+                        <div class="card-icon amber">❓</div>
+                        <div class="card-info">
+                            <h3>常见问题</h3>
+                            <p>遇到问题先看这里</p>
+                        </div>
+                    </div>
+                    <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/lgbugs1doxxtuwxg" target="_blank" class="card-link">
+                        查看 FAQ
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                 </div>
             </div>
-            
-            <div class="card switch">
-                <div class="card-icon">🔄</div>
-                <h3 class="card-title">KiroSwitch 续杯工具</h3>
-                <p class="card-desc">无限续杯必备工具</p>
-                <div class="download-links">
-                    <a href="https://wwbdc.lanzoub.com/iEJwa3euhg3e" target="_blank">Windows</a>
-                    <a href="https://wwbdc.lanzoub.com/i3EHQ3euhgzg" target="_blank">macOS</a>
-                    <a href="https://wwbdc.lanzoub.com/irRZs3euhghi" target="_blank">Linux</a>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">下载安装</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="cards-grid cols-2">
+                <div class="card download-card fade-up">
+                    <h3><span>🚀</span> Kiro 官方客户端</h3>
+                    <p class="desc">下载官方 Kiro IDE，开始你的 AI 编程之旅</p>
+                    <div class="download-btns">
+                        <a href="https://desktop-release.kiro.dev/latest/windows/x64" target="_blank" class="download-btn">
+                            <svg viewBox="0 0 24 24"><path d="M3 5.5L10.5 4.5V11.5H3V5.5ZM3 18.5L10.5 19.5V12.5H3V18.5ZM11.5 19.7L21 21V12.5H11.5V19.7ZM11.5 4.3V11.5H21V3L11.5 4.3Z"/></svg>
+                            Windows
+                        </a>
+                        <a href="https://desktop-release.kiro.dev/latest/darwin/arm64" target="_blank" class="download-btn">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+                            macOS
+                        </a>
+                        <a href="https://desktop-release.kiro.dev/latest/linux/x64" target="_blank" class="download-btn">
+                            <svg viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.311.003-.467.008-2.478.067-4.603 1.661-5.4 4.027-.344 1.02-.466 2.126-.388 3.206.084 1.156.36 2.28.82 3.32.46 1.04 1.1 1.98 1.88 2.78.78.8 1.68 1.46 2.66 1.96.98.5 2.02.84 3.1 1.02 1.08.18 2.18.18 3.26 0 1.08-.18 2.12-.52 3.1-1.02.98-.5 1.88-1.16 2.66-1.96.78-.8 1.42-1.74 1.88-2.78.46-1.04.74-2.16.82-3.32.08-1.08-.04-2.19-.39-3.21-.8-2.37-2.92-3.96-5.4-4.03-.16-.01-.32-.01-.48-.01zm-.5 2.5c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
+                            Linux
+                        </a>
+                    </div>
+                </div>
+                <div class="card download-card fade-up">
+                    <h3><span>🔄</span> KiroSwitch 续杯工具</h3>
+                    <p class="desc">无限续杯必备工具，实现无感换号</p>
+                    <div class="download-btns">
+                        <a href="https://wwbdc.lanzoub.com/iEJwa3euhg3e" target="_blank" class="download-btn">
+                            <svg viewBox="0 0 24 24"><path d="M3 5.5L10.5 4.5V11.5H3V5.5ZM3 18.5L10.5 19.5V12.5H3V18.5ZM11.5 19.7L21 21V12.5H11.5V19.7ZM11.5 4.3V11.5H21V3L11.5 4.3Z"/></svg>
+                            Windows
+                        </a>
+                        <a href="https://wwbdc.lanzoub.com/i3EHQ3euhgzg" target="_blank" class="download-btn">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+                            macOS
+                        </a>
+                        <a href="https://wwbdc.lanzoub.com/irRZs3euhghi" target="_blank" class="download-btn">
+                            <svg viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.311.003-.467.008-2.478.067-4.603 1.661-5.4 4.027-.344 1.02-.466 2.126-.388 3.206.084 1.156.36 2.28.82 3.32.46 1.04 1.1 1.98 1.88 2.78.78.8 1.68 1.46 2.66 1.96.98.5 2.02.84 3.1 1.02 1.08.18 2.18.18 3.26 0 1.08-.18 2.12-.52 3.1-1.02.98-.5 1.88-1.16 2.66-1.96.78-.8 1.42-1.74 1.88-2.78.46-1.04.74-2.16.82-3.32.08-1.08-.04-2.19-.39-3.21-.8-2.37-2.92-3.96-5.4-4.03-.16-.01-.32-.01-.48-.01zm-.5 2.5c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
+                            Linux
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- 二维码 -->
-        <div class="qr-cards">
-            <div class="card qq">
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">加入社群</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="card qr-card fade-up">
                 <div class="qr-image">
                     <img src="src/qq.jpg" alt="QQ群二维码">
                 </div>
-                <h3 class="card-title">QQ交流群</h3>
-                <p class="qr-label">扫码加入获取支持</p>
+                <div class="qr-info">
+                    <h3>QQ 交流群</h3>
+                    <p>扫码加入群聊，获取最新动态、使用帮助和技术支持</p>
+                    <span class="tip">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        实时答疑 · 问题反馈
+                    </span>
+                </div>
             </div>
-        </div>
-    </div>
-    
+        </section>
+    </main>
+
     <footer class="footer">
-        <p>© 2025 Kiro 无限续杯 · <a href="https://github.com/zeoak9297/kiro-free" target="_blank">GitHub</a></p>
+        <div class="wrapper">
+            <div class="footer-links">
+                <a href="https://pay.ldxp.cn/shop/Z3VSKEGC" target="_blank">购买服务</a>
+                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/xa874nc3z7kadzn8?singleDoc#" target="_blank">使用教程</a>
+                <a href="https://www.yuque.com/yuqueyonghuzqcfzk/vgecid/lgbugs1doxxtuwxg" target="_blank">常见问题</a>
+                <a href="https://github.com/zeoak9297/kiro-free" target="_blank">GitHub</a>
+            </div>
+            <p class="copyright">© 2026 Kiro 无限续杯</p>
+        </div>
     </footer>
-    
-    <script>
-        // 粒子效果
-        const container = document.getElementById('particles');
-        for(let i = 0; i < 20; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDelay = Math.random() * 15 + 's';
-            p.style.animationDuration = (10 + Math.random() * 10) + 's';
-            container.appendChild(p);
-        }
-    </script>
 </body>
 </html>
